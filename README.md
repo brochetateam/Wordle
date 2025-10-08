@@ -1,119 +1,76 @@
-# 🐞 Wordle en Español - Little Bug Games
+# Wordle en Español - Little Bug Games
 
-¡Bienvenido al Wordle en español más adorable de la web! 🌸✨
+¡Bienvenido al Wordle en español de Little Bug Games! Una versión divertida y colorida del famoso juego de palabras.
 
-## 🎮 [Jugar Ahora](https://tu-usuario.github.io/Wordle)
+## Descripción
 
-Un juego de Wordle completamente funcional en español, con una interfaz hermosa y nuestra mariquita mascota Little Bug.
+Este proyecto es un juego de Wordle completamente funcional en español, construido sobre nuestro template personalizado de Little Bug Games. Características principales:
 
-![Wordle Little Bug](https://img.shields.io/badge/Wordle-Little%20Bug-ff3c91?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZWxsaXBzZSBjeD0iNTAiIGN5PSI1NSIgcng9IjI4IiByeT0iMzUiIGZpbGw9IiNmZjNjOTEiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjI1IiByPSIxOCIgZmlsbD0iIzMzMyIvPgo8L3N2Zz4K)
+*   **Wordle en español**: Adivina palabras de 5 letras en español
+*   **Interfaz hermosa**: Dos temas disponibles (Beautiful y Warrior) 
+*   **Mariquita adorable**: Nuestro icono personalizado de Little Bug con variantes temáticas
+*   **PWA completa**: Instala el juego en tu dispositivo
+*   **Estadísticas**: Seguimiento de partidas, rachas y porcentaje de victorias
+*   **Responsive**: Funciona perfectamente en móvil y escritorio
+*   **Persistencia**: Guarda tu progreso y estadísticas localmente
 
-## ✨ Características
+## Estructura del Proyecto
 
-- 🇪🇸 **Completamente en español** - Palabras de 5 letras cuidadosamente seleccionadas
-- 🎨 **Dos temas hermosos** - Beautiful (rosa) y Warrior (rojo)
-- 🐞 **Mariquita adorable** - Nuestra mascota Little Bug con variantes temáticas
-- 📱 **PWA completa** - Instálalo como app nativa en tu dispositivo
-- 📊 **Estadísticas detalladas** - Seguimiento de partidas, rachas y victorias
-- 📱 **Responsive** - Perfecto en móvil, tablet y escritorio
-- 💾 **Sin internet** - Funciona completamente offline
-- 🎯 **Fácil de usar** - Interfaz intuitiva con teclado virtual
+```
+Wordle/
+├── index.html           # Juego completo de Wordle en un solo archivo
+├── manifest.webmanifest # Manifiesto para PWA
+├── sw.js               # Service Worker para funcionalidad offline
+└── doc.md              # Este archivo
+```
 
-## 🎯 Cómo Jugar
+## Cómo Jugar
 
 1. **Objetivo**: Adivina la palabra secreta de 5 letras en máximo 6 intentos
-2. **Escribir**: Usa el teclado físico o toca las teclas virtuales
-3. **Enviar**: Presiona ENTER cuando tengas 5 letras
-4. **Colores**:
-   - 🟩 **Verde**: Letra correcta en la posición correcta
-   - 🟨 **Amarillo**: Letra está en la palabra pero en otra posición
-   - ⬜ **Gris**: Letra no está en la palabra
+2. **Colores**: 
+   - 🟩 Verde: Letra correcta en posición correcta
+   - 🟨 Amarillo: Letra correcta en posición incorrecta  
+   - ⬜ Gris: Letra no está en la palabra
+3. **Controles**: Usa el teclado físico o virtual para escribir
+4. **Nueva partida**: Haz clic en "Nueva" para empezar otra ronda
 
-## 🎮 Controles
+## Características Técnicas
 
-- **Teclado físico**: Escribe directamente
-- **Teclado virtual**: Toca las teclas en pantalla
-- **ENTER**: Enviar palabra
-- **⌫**: Borrar letra
-- **🎨**: Cambiar tema
-- **📊**: Ver estadísticas
-- **🔄**: Nueva partida
+*   **Una sola página**: Todo el juego está contenido en `index.html`
+*   **Sin dependencias**: Funciona completamente offline
+*   **PWA**: Instálalo como aplicación nativa
+*   **Temas**: Alterna entre modo Beautiful (rosa) y Warrior (rojo)
+*   **Responsive**: Optimizado para móvil y escritorio
+*   **LocalStorage**: Guarda estadísticas y preferencias
 
-## 🛠️ Tecnologías
+## Despliegue en GitHub Pages
 
-- **HTML5** - Estructura semántica
-- **CSS3** - Grid, Flexbox, animaciones
-- **JavaScript** - ES6+, LocalStorage
-- **PWA** - Service Worker, Web Manifest
-- **SVG** - Iconos vectoriales personalizados
+Para poner el juego en GitHub Pages:
 
-## 🚀 Instalación como PWA
+1. **Repositorio**: Asegúrate de que los archivos estén en la rama `main` o `gh-pages`
+2. **GitHub Pages**: Ve a Settings > Pages en tu repositorio
+3. **Source**: Selecciona "Deploy from a branch" 
+4. **Branch**: Elige `main` y folder `/ (root)`
+5. **Guardar**: GitHub generará la URL de tu juego
 
-1. Abre el juego en tu navegador
-2. Busca el ícono de "Instalar" en la barra de direcciones
-3. Haz clic en "Instalar" 
-4. ¡Ya tienes Wordle Little Bug como una app nativa!
+## Personalización
 
-## 🎨 Temas Disponibles
+Para personalizar el juego:
 
-### 🌸 Beautiful Theme
-- Colores suaves en tonos rosa
-- Mariquita adorable y amigable
-- Decoración con flores y corazones
+*   **Palabras**: Modifica el array `WORDS` en el JavaScript
+*   **Colores**: Cambia las variables CSS en los temas
+*   **Mariquita**: Edita los SVGs de las variantes Beautiful/Warrior
+*   **Textos**: Actualiza los mensajes y títulos en español
+*   **Estadísticas**: Añade nuevas métricas en el modal de stats
 
-### ⚔️ Warrior Theme  
-- Colores intensos en tonos rojos
-- Mariquita guerrera con actitud
-- Decoración con elementos de batalla
+## Tecnologías Utilizadas
 
-## 📊 Estadísticas
-
-El juego rastrea automáticamente:
-- **Partidas jugadas**
-- **Porcentaje de victorias**
-- **Racha actual**
-- **Mejor racha**
-
-## 🔧 Personalización
-
-¿Quieres modificar el juego? Puedes:
-
-- **Cambiar palabras**: Edita el array `WORDS` en `index.html`
-- **Modificar colores**: Ajusta las variables CSS
-- **Personalizar la mariquita**: Edita los SVGs
-- **Añadir características**: Extiende el JavaScript
-
-## 🐛 Little Bug Games
-
-Somos un estudio de videojuegos independiente con mucha imaginación y humor. Nos encanta crear experiencias web divertidas y accesibles.
-
-**Nuestros valores:**
-- 🎮 Diversión ante todo
-- 🌈 Diseño colorido e inclusivo  
-- 🚀 Tecnología web moderna
-- 💝 Software libre y abierto
-
-## 📄 Licencia
-
-Este proyecto es open source. Siéntete libre de usar, modificar y distribuir.
-
-## 🤝 Contribuir
-
-¿Tienes ideas para mejorar el juego? ¡Las contribuciones son bienvenidas!
-
-1. Fork del repositorio
-2. Crea una rama para tu feature
-3. Haz tus cambios
-4. Envía un Pull Request
-
-## 📞 Contacto
-
-- 🐞 **Little Bug Games** 
-- 📧 Email: hola@littlebug.games (ejemplo)
-- 🐦 Twitter: @LittleBugGames (ejemplo)
+*   **HTML5**: Estructura semántica y accesible
+*   **CSS3**: Grid, Flexbox, variables CSS, gradientes
+*   **JavaScript**: ES6+, LocalStorage, eventos
+*   **PWA**: Service Worker, Web App Manifest
+*   **SVG**: Iconos vectoriales personalizados
 
 ---
 
-Hecho con ❤️ y 🐞 por Little Bug Games
-
-¡Que disfrutes jugando Wordle en español! 🎉
+¡Diviértete jugando y personaliza el juego a tu gusto! 🐞✨
