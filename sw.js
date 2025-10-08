@@ -1,8 +1,8 @@
-const CACHE_NAME = 'little-bug-wordle-v1';
+const CACHE_NAME = 'little-bug-wordle-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
+  './',
+  './index.html',
+  './manifest.webmanifest',
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Staatliches&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
 ];
