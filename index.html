@@ -317,21 +317,13 @@
       box-shadow: var(--shadow-elev);
       backdrop-filter: blur(6px);
       overflow: hidden;
-    }
-    .bug-hero svg {
-      width: 100%;
-      height: 100%;
-      transform: translateY(1px);
+      font-size: clamp(24px, 5vw, 40px);
       animation: bob 3s ease-in-out infinite;
     }
     @keyframes bob {
       0%, 100% { transform: translateY(1px); }
       50% { transform: translateY(-2px); }
     }
-    .bug-hero [data-variant="beautiful"] { display: none; }
-    .bug-hero [data-variant="warrior"] { display: none; }
-    body[data-theme="beautiful"] .bug-hero [data-variant="beautiful"] { display: block; }
-    body[data-theme="warrior"] .bug-hero [data-variant="warrior"] { display: block; }
 
     /* --- Toast (Notificaciones) --- */
     .toast {
@@ -491,12 +483,37 @@
       color: var(--muted);
     }
 
+    /* --- Botón de instalar PWA --- */
+    .install-btn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(180deg, var(--btn-bg), var(--btn-bg-2));
+      color: var(--btn-text);
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      box-shadow: 0 4px 12px var(--glow);
+      cursor: pointer;
+      z-index: 20;
+      font-size: 20px;
+      transition: transform 200ms ease;
+    }
+    .install-btn:hover {
+      transform: scale(1.1);
+    }
+    .install-btn.show {
+      display: block;
+    }
+
     /* --- Estilos para Móvil --- */
     @media (max-width: 640px) {
       .brand { align-items: flex-start; }
       .brand h1 { font-size: clamp(18px, 6vw, 22px); }
       .product-badge { display: none; }
-      .product-badge.product-mobile { display: inline-block; font-size: 30px; padding: 6px 16px; margin: 8px auto 0; background: linear-gradient(180deg, var(--btn-bg), var(--btn-bg-2)); color: #fff; box-shadow: 0 8px 18px -6px var(--glow); }
+      .product-badge.product-mobile { display: inline-block; font-size: 36px; padding: 8px 18px; margin: 8px auto 0; background: linear-gradient(180deg, var(--btn-bg), var(--btn-bg-2)); color: #fff; box-shadow: 0 8px 18px -6px var(--glow); }
 
       .right-controls { position: absolute; top: 6px; right: 10px; flex-direction: column; align-items: flex-end; gap: 6px; }
       .right-actions-row { gap: 6px; }
@@ -526,6 +543,14 @@
         min-width: 50px;
         font-size: 10px;
       }
+
+      .install-btn {
+        bottom: 80px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+      }
     }
   </style>
 
@@ -541,96 +566,7 @@
       <div class="brand">
         <!-- Logo de Little Bug: Mariquita -->
         <div class="bug-hero" title="Little Bug Games" id="bugHero">
-          <!-- Beautiful Variant -->
-          <svg viewBox="0 0 100 100" data-variant="beautiful" aria-hidden="true">
-            <defs>
-              <linearGradient id="bodyGradBeautiful" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff8ac9"/>
-                <stop offset="100%" stop-color="#ff3c91"/>
-              </linearGradient>
-              <radialGradient id="spotGrad" cx="0.5" cy="0.3" r="0.4">
-                <stop offset="0%" stop-color="#ff1a6b"/>
-                <stop offset="100%" stop-color="#d1477a"/>
-              </radialGradient>
-            </defs>
-            <!-- Cuerpo de la mariquita -->
-            <ellipse cx="50" cy="55" rx="28" ry="35" fill="url(#bodyGradBeautiful)" stroke="#ff2d7a" stroke-width="2"/>
-            <!-- Cabeza -->
-            <circle cx="50" cy="25" r="18" fill="#333" stroke="#222" stroke-width="1"/>
-            <!-- Antenas -->
-            <line x1="42" y1="15" x2="38" y2="8" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-            <line x1="58" y1="15" x2="62" y2="8" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="38" cy="8" r="3" fill="#ff3c91"/>
-            <circle cx="62" cy="8" r="3" fill="#ff3c91"/>
-            <!-- Ojos -->
-            <circle cx="44" cy="22" r="4" fill="#fff"/>
-            <circle cx="56" cy="22" r="4" fill="#fff"/>
-            <circle cx="44" cy="22" r="2" fill="#333"/>
-            <circle cx="56" cy="22" r="2" fill="#333"/>
-            <!-- Sonrisa -->
-            <path d="M46,30 Q50,34 54,30" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Manchas -->
-            <circle cx="42" cy="45" r="5" fill="url(#spotGrad)"/>
-            <circle cx="58" cy="45" r="5" fill="url(#spotGrad)"/>
-            <circle cx="35" cy="65" r="4" fill="url(#spotGrad)"/>
-            <circle cx="65" cy="65" r="4" fill="url(#spotGrad)"/>
-            <circle cx="50" cy="70" r="3" fill="url(#spotGrad)"/>
-            <!-- Línea central -->
-            <line x1="50" y1="30" x2="50" y2="85" stroke="#ff2d7a" stroke-width="2"/>
-            <!-- Patitas -->
-            <ellipse cx="30" cy="50" rx="3" ry="8" fill="#333" transform="rotate(-20 30 50)"/>
-            <ellipse cx="70" cy="50" rx="3" ry="8" fill="#333" transform="rotate(20 70 50)"/>
-            <ellipse cx="28" cy="70" rx="3" ry="8" fill="#333" transform="rotate(-10 28 70)"/>
-            <ellipse cx="72" cy="70" rx="3" ry="8" fill="#333" transform="rotate(10 72 70)"/>
-          </svg>
-          <!-- Warrior Variant -->
-          <svg viewBox="0 0 100 100" data-variant="warrior" aria-hidden="true">
-            <defs>
-              <linearGradient id="bodyGradWarrior" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff6b6b"/>
-                <stop offset="100%" stop-color="#ff2438"/>
-              </linearGradient>
-              <radialGradient id="spotGradWarrior" cx="0.5" cy="0.3" r="0.4">
-                <stop offset="0%" stop-color="#990000"/>
-                <stop offset="100%" stop-color="#660000"/>
-              </radialGradient>
-            </defs>
-            <!-- Cuerpo de la mariquita malvada -->
-            <ellipse cx="50" cy="55" rx="28" ry="35" fill="url(#bodyGradWarrior)" stroke="#cc0000" stroke-width="2"/>
-            <!-- Cabeza con cuernitos -->
-            <circle cx="50" cy="25" r="18" fill="#1a0000" stroke="#660000" stroke-width="1"/>
-            <!-- Cuernitos diabólicos -->
-            <path d="M40,12 L38,5 L42,8 Z" fill="#ff2438"/>
-            <path d="M60,12 L62,5 L58,8 Z" fill="#ff2438"/>
-            <!-- Antenas -->
-            <line x1="42" y1="15" x2="38" y2="8" stroke="#660000" stroke-width="3" stroke-linecap="round"/>
-            <line x1="58" y1="15" x2="62" y2="8" stroke="#660000" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="38" cy="8" r="3" fill="#ff2438"/>
-            <circle cx="62" cy="8" r="3" fill="#ff2438"/>
-            <!-- Ojos malvados -->
-            <circle cx="44" cy="22" r="4" fill="#ff0000"/>
-            <circle cx="56" cy="22" r="4" fill="#ff0000"/>
-            <circle cx="44" cy="22" r="2" fill="#000"/>
-            <circle cx="56" cy="22" r="2" fill="#000"/>
-            <!-- Sonrisa malvada -->
-            <path d="M46,30 Q50,26 54,30" stroke="#ff0000" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Dientes -->
-            <polygon points="48,28 49,32 50,28" fill="#fff"/>
-            <polygon points="51,28 52,32 53,28" fill="#fff"/>
-            <!-- Manchas de guerra -->
-            <circle cx="42" cy="45" r="5" fill="url(#spotGradWarrior)"/>
-            <circle cx="58" cy="45" r="5" fill="url(#spotGradWarrior)"/>
-            <circle cx="35" cy="65" r="4" fill="url(#spotGradWarrior)"/>
-            <circle cx="65" cy="65" r="4" fill="url(#spotGradWarrior)"/>
-            <circle cx="50" cy="70" r="3" fill="url(#spotGradWarrior)"/>
-            <!-- Línea central con pinchos -->
-            <path d="M50,30 L50,85 M45,40 L55,40 M45,55 L55,55 M45,75 L55,75" stroke="#cc0000" stroke-width="2"/>
-            <!-- Patitas de guerra -->
-            <ellipse cx="30" cy="50" rx="3" ry="8" fill="#1a0000" transform="rotate(-20 30 50)"/>
-            <ellipse cx="70" cy="50" rx="3" ry="8" fill="#1a0000" transform="rotate(20 70 50)"/>
-            <ellipse cx="28" cy="70" rx="3" ry="8" fill="#1a0000" transform="rotate(-10 28 70)"/>
-            <ellipse cx="72" cy="70" rx="3" ry="8" fill="#1a0000" transform="rotate(10 72 70)"/>
-          </svg>
+          🐞
         </div>
 
         <div>
@@ -730,6 +666,11 @@
     <div id="footer-text">¡Hola mundo! Este es Wordle en español<br>Made with <span style="color:#ff3c91;">❤</span> & <i class="fa-solid fa-bug" style="color:#ff3c91;"></i><br>© <span id="current-year">2025</span> Little Bug Games</div>
   </footer>
 
+  <!-- Botón de instalar PWA -->
+  <button id="install-btn" class="install-btn" title="Instalar como app">
+    <i class="fa-solid fa-download"></i>
+  </button>
+
   <!-- Modal de Estadísticas -->
   <div id="modal-stats" class="modal" role="dialog" aria-modal="true" aria-labelledby="stats-title">
     <div class="modal-card">
@@ -779,9 +720,11 @@
     const statsBtn = document.getElementById('stats-btn');
     const newGameBtn = document.getElementById('new-game-btn');
     const modalStats = document.getElementById('modal-stats');
+    const installBtn = document.getElementById('install-btn');
 
     // ========== Estado del Template ==========
     let currentTheme = 'beautiful'; // Tema por defecto
+    let deferredPrompt; // Para el evento de instalación PWA
 
     // ========== Configuración y Datos ==========
     const themes = {
@@ -829,8 +772,8 @@
             s.style.setProperty('--dur', (12 + Math.random() * 16) + 's');
             s.style.setProperty('--s', (0.6 + Math.random() * 1.2).toFixed(2));
             s.style.animationDelay = (-Math.random() * 10) + 's';
-            // Usar emojis de mariquitas y bichos
-            const icons = isBeautiful ? ['🐞', '🦋', '🌸', '💖'] : ['🐞', '🕷️', '🦂', '⚡'];
+            // Usar emojis de bichos pero SIN mariquitas (esa es nuestra marca)
+            const icons = isBeautiful ? ['🦋', '🌸', '💖', '✨'] : ['🕷️', '🦂', '⚡', '🔥'];
             s.textContent = icons[Math.floor(Math.random() * icons.length)];
             decor.appendChild(s);
         }
@@ -896,6 +839,54 @@
         if (currentYearElement) {
             currentYearElement.textContent = new Date().getFullYear();
         }
+
+        // Registrar Service Worker para PWA si está disponible
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => console.log('Service Worker registrado con éxito:', registration.scope))
+                    .catch(error => console.log('Error al registrar el Service Worker:', error));
+            });
+        }
+
+        // PWA Install handling
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-info bar from appearing on mobile
+            e.preventDefault();
+            // Save the event for later use
+            deferredPrompt = e;
+            // Show install button only on mobile
+            if (window.innerWidth <= 640 && installBtn) {
+                installBtn.classList.add('show');
+            }
+        });
+
+        // Handle install button click
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    // Show the install prompt
+                    deferredPrompt.prompt();
+                    // Wait for the user's choice
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`User choice: ${outcome}`);
+                    // Clear the deferredPrompt variable
+                    deferredPrompt = null;
+                    // Hide the install button
+                    installBtn.classList.remove('show');
+                }
+            });
+        }
+
+        // Hide install button if app is already installed
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA installed successfully');
+            if (installBtn) {
+                installBtn.classList.remove('show');
+            }
+            deferredPrompt = null;
+        });
+
         if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
         window.addEventListener('resize', sizeBugToTitle);
         sizeBugToTitle();
